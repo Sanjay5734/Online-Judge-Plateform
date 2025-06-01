@@ -1,0 +1,127 @@
+High-Level Document: Online Judge Application
+Overview
+The Online Judge Application is a full-stack project developed using the MERN stack. The application enables users to submit code solutions to programming problems, automatically evaluate the submissions, and provide verdicts.
+
+Key Features
+User Registration and Authentication
+Problem Management
+Code Submission and Evaluation
+Leaderboard Display
+Competition Functionality (Phase 2)
+
+Database Models
+
+`1.) - Problem
+Attributes:
+ProblemStatement: String
+Name: String
+Code: String
+Difficulty: Enum (Hard, Easy, Medium)
+
+2.) - Solution
+Attributes:
+Problem: Reference to Problem
+Verdict: Enum (Accepted, Wrong Answer, Runtime Error, Compilation Error)
+SubmittedAt: DateTime (auto-generated)
+
+3.) - TestCase
+Attributes:
+Problem: Reference to Problem
+Input: String
+Output: String
+
+4.) - User
+Attributes:
+UserId: String
+Password: String
+Email: String
+DOB: String
+FirstName: String
+LastName: String
+ProblemList: Array of references to Problem
+
+UI Screens
+Login / Signup
+Components: LoginForm, SignupForm
+Routes: /login, /signup
+Dashboard
+
+Components: Dashboard, Leaderboard
+Route: /dashboard
+Problem List
+
+Components: ProblemList
+Route: /problems
+Problem Page
+
+Components: ProblemPage, CodeSubmissionBox, SubmissionLog
+Route: /problems/:id
+Leaderboard (Optional)
+
+Components: Leaderboard
+Route: /leaderboard
+API Endpoints for Frontend and Backend Interaction
+Fetch All Problems
+
+Frontend: Fetch request to get all problems
+Method: GET
+Endpoint: /api/problems
+Backend: Route to handle fetching all problems
+Controller Function: Get all problems from the database and return
+Fetch Individual Problem
+
+Frontend: Fetch request to get problem details
+Method: GET
+Endpoint: /api/problems/:id
+Backend: Route to handle fetching a specific problem
+Controller Function: Get problem details by ID and return
+Submit Code
+ 
+Frontend: POST request to submit code
+Method: POST
+Endpoint: /api/solutions
+Body: { problemId, code }
+Backend: Route to handle code submission and evaluation
+Controller Function: Evaluate code, compare outputs, save verdict, and return verdict
+User Registration and Login
+
+Frontend: POST requests for signup and login
+Signup Method: POST
+Signup Endpoint: /api/signup
+Login Method: POST
+Login Endpoint: /api/login
+Body: { userId, password, email, dob, firstName, lastName } (signup) and { userId, password } (login)
+Backend: Routes to handle user registration and login
+Controller Functions: Create new user for signup, authenticate user for login
+Fetch Leaderboard
+
+Frontend: Fetch request to get the latest submissions and verdicts
+Method: GET
+Endpoint: /api/leaderboard
+Backend: Route to handle fetching leaderboard data
+Controller Function: Get latest solutions with verdicts, limit to last 10
+Routes and Controller Functions
+Routes
+
+Problem Routes
+/api/problems: GET (all problems)
+/api/problems/:id: GET (specific problem)
+Solution Routes
+/api/solutions: POST (submit code)
+User Routes
+/api/signup: POST (user registration)
+/api/login: POST (user login)
+Leaderboard Routes
+/api/leaderboard: GET (latest submissions)
+Controller Functions
+
+Problem Controllers
+getAllProblems: Fetch all problems from the database
+getProblemById: Fetch specific problem details by ID
+Solution Controllers
+submitSolution: Handle code submission, evaluate against test cases, save and return verdict
+User Controllers
+signupUser: Register a new user
+loginUser: Authenticate user credentials
+Leaderboard Controllers
+getLeaderboard: Fetch latest submissions and their verdicts
