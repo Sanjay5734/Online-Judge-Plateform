@@ -68,7 +68,7 @@ An online judge platform hosting coding problems and challenges. Users solve a s
       </tr>
     <tr>
       <td align="center">
-        <img src="https://github.com/yash52003/OnlineJudge/blob/main/assets/Homepage.png" alt="Landing page" style="width: 300px;"/>
+        <img src="https://github.com/Sanjay5734/Online-Judge-Plateform/blob/main/assets/Screenshot%202025-06-01%20161822.png" alt="Landing page" style="width: 300px;"/>
         <br />
         <em>Homepage</em>
       </td>
